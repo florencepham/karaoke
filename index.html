@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Daydream Believer</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+<h1 id="title">Daydream Believer</h1>
+
+<video src="http://www.cs.tufts.edu/comp/20/daydream_believer.webm" id="music_video" controls></video>
+<div id="lyrics"></div>
+
+<script>
+	var media = document.getElementById("lyrics");
+	var video = document.getElementById("music_video");
+
+	ohIcouldhide = "<p>Oh, I could hide 'neath the wings</p><p>Of the bluebird as she sings.</p><p>The six o'clock alarm would never ring.</p><p>But it rings and I rise,</p><p>Wipe the sleep out of my eyes.</p><p>My shavin' razor's cold and it stings.</p>";
+	chearUp = "<p>Cheer up, Sleepy Jean!</p><p>Oh, what can it mean?</p><p>To a daydream believer</p><p>And a homecoming queen.</p>";
+	youOncethought = "<p>You once thought of me</p><p>As a white knight on a steed.</p><p>Now you know how happy I can be.</p><p>Oh, and our good times start and end</p><p>Without dollar one to spend!</p><p>But how much, baby, do we really need?</p>";
+
+	var image1 = new Image();
+	image1.src = 'stick.png';
+
+	var image2 = new Image();
+	image2.src = 'cartoondog.png';
+
+	function modifyText() {
+		if (video.currentTime > 5 && video.currentTime < 34) {
+			media.innerHTML = ohIcouldhide;
+		} else if (video.currentTime > 34 && video.currentTime < 54) {
+			media.innerHTML = chearUp;
+			media.appendChild(image2);
+		} else if (video.currentTime > 54 && video.currentTime < 83) {
+			media.innerHTML = youOncethought;
+		} else if (video.currentTime > 83 && video.currentTime < 100) {
+			media.innerHTML = chearUp;
+			media.appendChild(image1);
+		} else if (video.currentTime > 100 && video.currentTime < 120) {
+			media.innerHTML = chearUp;
+		} else if (video.currentTime > 120 && video.currentTime < 127) {
+			media.innerHTML = "<p>[Instrumental interlude]</p>";
+		} else if (video.currentTime > 127 && video.currentTime < 160) {
+			media.innerHTML = chearUp;
+		} else if (video.currentTime > 160) {
+			media.innerHTML = "The End...";
+		}
+	}
+	video.addEventListener('timeupdate', modifyText, true);
+</script>
+</body>
+</html>	
+
+
